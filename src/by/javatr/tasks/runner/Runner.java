@@ -1,17 +1,19 @@
 package by.javatr.tasks.runner;
 
 import by.javatr.tasks.entity.Ball;
+import by.javatr.tasks.entity.Basket;
 import by.javatr.tasks.entity.Color;
-import by.javatr.tasks.entity.Box;
-import by.javatr.tasks.exception.EmptyBoxException;
-import by.javatr.tasks.unit.BoxLogics;
+import by.javatr.tasks.exception.FullBasketException;
+import by.javatr.tasks.exception.NullBallException;
+import by.javatr.tasks.exception.NullBasketException;
+import by.javatr.tasks.unit.BasketLogics;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Runner {
     public static void main(String... args){
-
+        try {
         ArrayList<Ball> balls = new ArrayList<Ball>();
         Collections.addAll(balls,
                 new Ball(30, Color.BLUE),
@@ -20,16 +22,16 @@ public class Runner {
                 new Ball(10, Color.YELLOW),
                 new Ball(3, Color.PINK));
 
-        Box box = new Box(balls);
+        Basket basket = new Basket(balls);
 
-        try {
-            int blueBallsAmount = BoxLogics.findBlueBalls(box);
-            double allWeight = BoxLogics.findSumWeight(box);
-            System.out.println(new Ball().hashCode());
+
+            int blueBallsAmount = BasketLogics.findBlueBalls(basket);
+            double allWeight = BasketLogics.findSumWeight(basket);
+            System.out.println(balls.size());
             System.out.println("Amount of blue balls is " + blueBallsAmount
                     + "\nWeight of all balls in box is " + allWeight);
         }
-        catch (EmptyBoxException e){
+        catch (NullBasketException | FullBasketException | NullBallException e){
             System.err.println(e.getMessage());
         }
     }

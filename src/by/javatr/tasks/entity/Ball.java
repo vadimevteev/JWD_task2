@@ -4,13 +4,8 @@ public class Ball {
     private double weight;
     private Color color;
 
-    {
-        this.weight = 0;
-    }
-
     public Ball() {
-        this.weight = 0;
-        this.color = null;
+
     }
 
     public Ball(double weight, Color color) {
@@ -18,6 +13,7 @@ public class Ball {
             this.weight = weight;
         this.color = color;
     }
+
 
     public double getWeight() {
         return weight;
