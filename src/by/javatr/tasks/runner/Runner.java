@@ -6,6 +6,7 @@ import by.javatr.tasks.entity.Color;
 import by.javatr.tasks.exception.FullBasketException;
 import by.javatr.tasks.exception.NullBallException;
 import by.javatr.tasks.exception.NullBasketException;
+import by.javatr.tasks.exception.NullColorException;
 import by.javatr.tasks.unit.BasketLogics;
 
 import java.util.ArrayList;
@@ -23,15 +24,12 @@ public class Runner {
                 new Ball(3, Color.PINK));
 
         Basket basket = new Basket(balls);
-
-
-            int blueBallsAmount = BasketLogics.findBlueBalls(basket);
-            double allWeight = BasketLogics.findSumWeight(basket);
-            System.out.println(balls.size());
-            System.out.println("Amount of blue balls is " + blueBallsAmount
+        int blueBallsAmount = BasketLogics.findBlueBalls(basket);
+        double allWeight = BasketLogics.findSumWeight(basket);
+        System.out.println("Amount of blue balls is " + blueBallsAmount
                     + "\nWeight of all balls in box is " + allWeight);
         }
-        catch (NullBasketException | FullBasketException | NullBallException e){
+        catch (NullBasketException | FullBasketException | NullBallException | NullColorException e){
             System.err.println(e.getMessage());
         }
     }

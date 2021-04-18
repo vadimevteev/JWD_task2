@@ -18,13 +18,13 @@ public class BasketLogics {
         return  sum;
     }
 
-    public static int findBlueBalls(Basket box) throws NullBasketException {
+    public static int findBlueBalls(Basket basket) throws NullBasketException {
 
-        if(box == null)
+        if(basket == null)
             throw new NullBasketException("Basket is null!");
 
         int amount = 0;
-        for(Ball ball: box.getBalls())
+        for(Ball ball: basket.getBalls())
             if(ball.getColor() == Color.BLUE)
                 amount++;
 

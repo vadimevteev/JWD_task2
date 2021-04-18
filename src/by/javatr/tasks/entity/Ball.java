@@ -1,17 +1,20 @@
 package by.javatr.tasks.entity;
 
+import by.javatr.tasks.exception.NullColorException;
+
 public class Ball {
     private double weight;
     private Color color;
 
-    public Ball() {
+    public Ball() {}
 
-    }
+    public Ball(double weight, Color color) throws NullColorException {
+        if(color == null)
+            throw new NullColorException("Color is null");
+        this.color = color;
 
-    public Ball(double weight, Color color) {
         if (weight > 0)
             this.weight = weight;
-        this.color = color;
     }
 
 
@@ -28,14 +31,16 @@ public class Ball {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(Color color) throws NullColorException {
+        if(color == null)
+            throw new NullColorException("Color is null");
         this.color = color;
     }
 
     @Override
     public String toString() {
-        return this.getClass().getName() +
-                "weight=" + weight +
+        return "{" + this.getClass().getSimpleName() +
+                " weight=" + weight +
                 ", color=" + color +
                 '}';
     }

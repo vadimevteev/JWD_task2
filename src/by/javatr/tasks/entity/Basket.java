@@ -1,14 +1,16 @@
 package by.javatr.tasks.entity;
 
 import by.javatr.tasks.exception.FullBasketException;
+import by.javatr.tasks.exception.IncorrectIndexException;
 import by.javatr.tasks.exception.NullBallException;
 import by.javatr.tasks.exception.NullBasketException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Basket {
     private final int MAX_BALLS = 30;
-    private ArrayList<Ball> balls;
+    private List<Ball> balls;
 
     public Basket(){
         this.balls = new ArrayList<>();
@@ -28,20 +30,23 @@ public class Basket {
         this.balls = balls;
     }
 
-    public ArrayList<Ball> getBalls() {
+    public List<Ball> getBalls() {
         return this.balls;
     }
 
-    public void deleteBall(int index){
-        if(index >= 0 && index < balls.size())
-             balls.remove(index);
+    public void deleteBall(int index) throws IncorrectIndexException {
+        if(index < 0 || index >= balls.size())
+            throw new IncorrectIndexException("Ball with this index does not exist");
+
+        balls.remove(index);
     }
 
-    public Ball getBall(int index){
+    public Ball getBall(int index) throws IncorrectIndexException {
 
-        Ball result = null;
-        if(index >= 0 && index < balls.size())
-            result = balls.get(index);
+        if(index < 0 || index >= balls.size())
+            throw new IncorrectIndexException("Ball with this index does not exist");
+
+        Ball result = balls.get(index);
         return result;
     }
 
@@ -71,7 +76,7 @@ public class Basket {
 
     @Override
     public String toString() {
-        return this.getClass().getName() +
+        return this.getClass().getSimpleName() +
                 "balls=" + balls +
                 '}';
     }
