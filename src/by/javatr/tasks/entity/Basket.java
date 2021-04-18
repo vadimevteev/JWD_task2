@@ -16,20 +16,6 @@ public class Basket {
         this.balls = new ArrayList<>();
     }
 
-    public Basket(ArrayList<Ball> balls) throws NullBasketException, FullBasketException, NullBallException {
-        if(balls == null)
-            throw new NullBasketException("Basket is null");
-
-        for(Ball ball : balls)
-            if(ball == null)
-                throw new NullBallException("Ball is null");
-
-        if( balls.size() > MAX_BALLS )
-            throw new FullBasketException("Basket is full");
-
-        this.balls = balls;
-    }
-
     public List<Ball> getBalls() {
         return this.balls;
     }
@@ -52,7 +38,7 @@ public class Basket {
 
     public void addBalls(ArrayList<Ball> balls) throws NullBasketException, FullBasketException, NullBallException {
         if(balls == null)
-            throw new NullBasketException("Basket is null");
+            throw new NullBallException("Ball is null");
 
         for(Ball ball : balls)
             if(ball == null)
@@ -64,7 +50,7 @@ public class Basket {
         this.balls.addAll(balls);
     }
 
-    public void addOneBall(Ball ball) throws NullBasketException, FullBasketException, NullBallException {
+    public void addOneBall(Ball ball) throws  FullBasketException, NullBallException {
         if(ball == null)
             throw new NullBallException("Ball is null");
 

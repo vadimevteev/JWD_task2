@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Runner {
-    public static void main(String... args){
+    public static void main(String... args) {
         try {
         ArrayList<Ball> balls = new ArrayList<Ball>();
         Collections.addAll(balls,
@@ -23,13 +23,14 @@ public class Runner {
                 new Ball(10, Color.YELLOW),
                 new Ball(3, Color.PINK));
 
-        Basket basket = new Basket(balls);
+        Basket basket = new Basket();
+        basket.addBalls(balls);
         int blueBallsAmount = BasketLogics.findBlueBalls(basket);
         double allWeight = BasketLogics.findSumWeight(basket);
         System.out.println("Amount of blue balls is " + blueBallsAmount
                     + "\nWeight of all balls in box is " + allWeight);
         }
-        catch (NullBasketException | FullBasketException | NullBallException | NullColorException e){
+        catch (NullBasketException | FullBasketException | NullBallException e){
             System.err.println(e.getMessage());
         }
     }

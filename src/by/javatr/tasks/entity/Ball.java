@@ -8,11 +8,9 @@ public class Ball {
 
     public Ball() {}
 
-    public Ball(double weight, Color color) throws NullColorException {
-        if(color == null)
-            throw new NullColorException("Color is null");
-        this.color = color;
+    public Ball(double weight, Color color) {
 
+        this.color = color;
         if (weight > 0)
             this.weight = weight;
     }
@@ -31,9 +29,7 @@ public class Ball {
         return color;
     }
 
-    public void setColor(Color color) throws NullColorException {
-        if(color == null)
-            throw new NullColorException("Color is null");
+    public void setColor(Color color) {
         this.color = color;
     }
 
